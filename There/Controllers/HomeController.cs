@@ -4,25 +4,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using There.Model;
+using There.Services;
 
 namespace There.Controllers
 {
     public class HomeController:Controller
     {
+
+        private readonly IRepsoitory<Student> _repsoitory;
+        public HomeController(IRepsoitory<Student> repsoitory)
+        {
+            _repsoitory = repsoitory;
+        }
         public string indexThere()
         {
             return "hello form HomeController ";
             
         }
 
-        //返回的是文字
+
+
+        #region  //返回的是文字
         //public IActionResult index()
         //{
         //    return this.Content("i you ok");
         //}
+        #endregion
 
-
-        //r返回的是一个json
+        #region //r返回的是一个json
         //public IActionResult Index()
         //{
         //    var std = new Student
@@ -34,21 +43,30 @@ namespace There.Controllers
         //};
         //    return new ObjectResult(std);
         //}
+        #endregion
 
-            
+        #region//返回视图
+        //public IActionResult index()
+        //{
+        //    var std = new Student
+        //    {
+        //        id = 1,
+        //        FirstName = "ok",
+        //        LastName = "canert"
 
-            //返回视图
+        //    };
+        //    return View(std);
+        //}
+        #endregion
 
+
+        #region  返回一个集合
         public IActionResult index()
         {
-            var std = new Student
-            {
-                id = 1,
-                FirstName = "ok",
-                LastName = "canert"
-
-            };
-            return View(std);
+            var list = _repsoitory.GetAll();
+            return View(list);
         }
+        #endregion
+
     }
 }

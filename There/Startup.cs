@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using There.Model;
+using There.Services;
 
 namespace There
 {
@@ -22,10 +24,13 @@ namespace There
             //依赖注入
             //单例注入模式
             services.AddSingleton(typeof(IwelcomeService), typeof(welcomeService));
-            services.AddSingleton<IwelcomeService, welcomeService>();
+           // services.AddSingleton<IwelcomeService, welcomeService>();
 
             //添加MVC服务
             services.AddMvc();
+
+            //添加一个容器
+            services.AddScoped<IRepsoitory<Student>, InMeMoryRepository>();
 
             ////域模式汪入，在一个请求域内，只产生一个实例对象
             //services.AddScoped(typeof(IwelcomeService), typeof(welcomeService));

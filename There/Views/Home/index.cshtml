@@ -1,8 +1,15 @@
-﻿
+﻿@using There.Model
+@model IEnumerable<There.Model.Student>
 @{
     ViewData["Title"] = "index";
 }
 
-<h1>index</h1>
+@*<h1>index</h1>
 <h1>@Model</h1>
 <h1>@this.Model</h1>
+<h1>@Model.FirstName</h1>*@
+@foreach (var item in Model)
+{
+    <li>@item.FirstName  @item.LastName</li>
+
+}
