@@ -1,15 +1,41 @@
-﻿@using There.Model
-@model IEnumerable<There.Model.Student>
+﻿@model HomeIndexViewModel
+
 @{
     ViewData["Title"] = "index";
-}
 
-@*<h1>index</h1>
-<h1>@Model</h1>
-<h1>@this.Model</h1>
-<h1>@Model.FirstName</h1>*@
-@foreach (var item in Model)
+}
+@*@Html.Partial("_studentTable", Model.StudentViews)*@
+@*这两种写法一个样 都是复用视图的代码*@
+<partial name="_studentTable" for="StudentViews" />
+@*
+    @model There.Model.Student
+    <h1>index</h1>
+    <h1>@Model</h1>
+    <h1>@this.Model</h1>
+    <h1>@Model.FirstName</h1>*@
+@*@using There.Model
+    @model IEnumerable<There.Model.Student>
+    @foreach (var item in Model)
+    {
+        <li>@item.FirstName  @item.LastName</li>
+
+    }*@
+
+
+@*<ul>
+
+        @foreach (var item in Model.StudentViews)
+        {
+            <li>@item.Name @item.Age <a href="/home/detail/@item.id">detail</a> </li>
+            @Html.ActionLink("删除", "index", "home", new { id = item.id });
+            <a asp-action="detail" asp-route-id="@item.id">删除 tag</a>
+        }
+
+    </ul>*@
+@section botton
 {
-    <li>@item.FirstName  @item.LastName</li>
-
+    <div>
+        <a asp-action="Create">添加一个学生</a>
+    </div>
 }
+@*@await Component.InvokeAsync("Welcome")*@

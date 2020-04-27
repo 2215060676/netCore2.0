@@ -1,0 +1,18 @@
+﻿@model IEnumerable<StudentViewModel>
+    <table>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            @*<tr>
+                <td>@item.Name</td>
+                <td>@item.Age</td>
+            </tr>*@
+            //partial 的嵌套
+            <partial name="_StudentRow" for="@item" />
+        }
+    </table>

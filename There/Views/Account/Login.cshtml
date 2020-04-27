@@ -1,0 +1,19 @@
+﻿@model LoginViewModel
+<h2>请登录或<a asp-action="Register" asp-controller="Account">注册</a></h2>
+<form asp-action="Login" asp-controller="Account" method="post">
+    <div>
+        <label asp-for="UserName"> </label> @*显示名字*@
+        <input asp-for="UserName" />   @*要填写的数据*@
+        <span asp-validation-for="UserName"></span> @*错误提示*@
+    </div>
+    <div>
+        <label asp-for="Password"> </label> @*显示名字*@
+        <input asp-for="Password" />   @*要填写的数据*@
+        <span asp-validation-for="Password"></span> @*错误提示*@
+    </div>
+    <div>
+        <input type="submit" value="提交" />
+    </div>
+    <div asp-validation-summary="All"></div> @*错误信息汇总*@
+</form>
+

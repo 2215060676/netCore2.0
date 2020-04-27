@@ -9,5 +9,10 @@ namespace There.Services
     public interface IRepsoitory<T> where T:class
     {
         IEnumerable<T> GetAll();
+        T GetByid(int id);
+
+        void Add(T newModel);
+
+        T ADD(T newModel);
     }
 }
